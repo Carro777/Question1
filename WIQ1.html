@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Fitness Posture Survey</title>
+    <style>
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: #f5f7fa;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .title {
+            text-align: center;
+            color: #1a73e8;
+            margin-bottom: 1.5rem;
+        }
+
+        .question {
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+            color: #2d3748;
+        }
+
+        .option {
+            display: block;
+            margin: 0.8rem 0;
+            font-size: 1rem;
+            color: #485563;
+            cursor: pointer;
+        }
+
+        .option input {
+            margin-right: 0.6rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #1557b0;
+        }
+
+        .thank-container {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .thank-title {
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .thank-text {
+            color: #485563;
+            margin-bottom: 1.5rem;
+        }
+
+        .platform-link {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="surveyContainer">
+        <h1 class="title">Home Fitness Posture Guidance Survey</h1>
+        
+        <form id="surveyForm">
+            <div class="question">
+                1. Are you concerned about poor form causing joint/muscle injuries during home workouts?
+                <div class="option">
+                    <input type="radio" id="q1a" name="q1" value="very_concerned" required>
+                    <label for="q1a">Very concerned (worry about every workout)</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1b" name="q1" value="somewhat_concerned">
+                    <label for="q1b">Somewhat concerned (had past injuries)</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1c" name="q1" value="moderate_concern">
+                    <label for="q1c">Moderate concern (aware of risks but not focused)</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1d" name="q1" value="no_concern">
+                    <label for="q1d">No concern (confident in form)</label>
+                </div>
+            </div>
+
+            <div class="question">
+                2. Have you experienced joint/muscle discomfort from unguided workouts?
+                <div class="option">
+                    <input type="radio" id="q2a" name="q2" value="frequent">
+                    <label for="q2a">Frequent (weekly/monthly)</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q2b" name="q2" value="occasional">
+                    <label for="q2b">Occasional (quarterly)</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q2c" name="q2" value="rare">
+                    <label for="q2c">Rare (1-2 times a year)</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q2d" name="q2" value="never">
+                    <label for="q2d">Never (use other guidance methods)</label>
+                </div>
+            </div>
+            <div class="question">
+                3. How do you currently ensure proper form during workouts?
+                <div class="option">
+                    <input type="radio" id="q3a" name="q3" value="mirror" required>
+                    <label for="q3a">Using a mirror to check posture</label>
+                 </div>
+                  <div class="option">
+                    <input type="radio" id="q3b" name="q3" value="app_diagrams">
+                    <label for="q3b">Following static diagrams in fitness apps</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q3c" name="q3" value="video_demos">
+                    <label for="q3c">Replicating poses from workout videos</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q3d" name="q3" value="intuition">
+                    <label for="q3d">Relying on personal experience/intuition</label>
+                </div>
+            </div>
+
+            <div class="question">
+                4. Does your current fitness app offer "real-time posture analysis" (e.g., joint angle tracking)?
+                <div class="option">
+                    <input type="radio" id="q4a" name="q4" value="no_function" required>
+                    <label for="q4a">No, no related functions</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q4b" name="q4" value="basic_tips">
+                    <label for="q4b">Yes, basic text/arrow tips</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q4c" name="q4" value="dynamic_analysis">
+                    <label for="q4c">Yes, AI-powered real-time correction</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q4d" name="q4" value="no_app">
+                    <label for="q4d">I don't use fitness apps</label>
+                </div>
+            </div>
+
+            <div class="question">
+                5. What issues do you have with current app guidance?
+                <div class="option">
+                    <input type="radio" id="q5a" name="q5" value="no_personalization">
+                    <label for="q5a">Generic guidance, no personal adjustment</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q5b" name="q5" value="delayed_feedback">
+                    <label for="q5b">Feedback is delayed, can't correct in real-time</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q5c" name="q5" value="limited_analysis">
+                    <label for="q5c">Only tracks angles, no muscle/breathing data</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q5d" name="q5" value="complex_ops">
+                    <label for="q5d">Requires extra devices (camera/sensors)</label>
+                </div>
+            </div>
+
+            <div class="question">
+                6. How willing are you to use a tool that analyzes posture via camera/sensors?
+                <div class="option">
+                    <input type="radio" id="q6a" name="q6" value="high_willingness">
+                    <label for="q6a">Very willing (would pay for it)</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q6b" name="q6" value="moderate_willingness">
+                    <label for="q6b">Somewhat willing (prefer free trial)</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q6c" name="q6" value="neutral">
+                    <label for="q6c">Neutral (no strong need)</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q6d" name="q6" value="unwilling">
+                    <label for="q6d">Unwilling (prefer self-adjustment)</label>
+                </div>
+            </div>
+
+            <div class="question">
+                7. Which aspects of form guidance are most important to you? <span style="color: #666; font-size: 0.9rem;">(Select up to 3)</span>
+                <div class="option">
+                    <input type="checkbox" id="q7a" name="q7[]" value="joint_angle"> 
+                    <label for="q7a">Joint angles (e.g., knee alignment)</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="q7b" name="q7[]" value="muscle_activation">
+                    <label for="q7b">Muscle engagement order (e.g., core activation)</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="q7c" name="q7[]" value="balance">
+                    <label for="q7c">Body balance (symmetry between sides)</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="q7d" name="q7[]" value="breathing">
+                    <label for="q7d">Breathing rhythm (e.g., exhale during exertion)</label>
+                </div>
+            </div>
+
+
+
+            <div class="question">
+                8. How do you reduce injury risk when training alone?
+                <div class="option">
+                    <input type="radio" id="q8a" name="q8" value="slow_down">
+                    <label for="q8a">Slow down movement speed</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q8b" name="q8" value="lower_intensity">
+                    <label for="q8b">Reduce weight/intensity</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q8c" name="q8" value="simple_exercises">
+                    <label for="q8c">Stick to bodyweight exercises</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q8d" name="q8" value="relying_memory">
+                    <label for="q8d">Recall past coach instructions</label>
+                </div>
+            </div>
+
+            <div class="question">
+                9. How often do you work out at home?
+                <div class="option">
+                    <input type="radio" id="q9a" name="q9" value="less_1">
+                    <label for="q9a">Less than 1 time/week</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q9b" name="q9" value="1-2">
+                    <label for="q9b">1-2 times/week</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q9c" name="q9" value="3-4">
+                    <label for="q9c">3-4 times/week</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q9d" name="q9" value="5+">
+                    <label for="q9d">5+ times/week</label>
+                </div>
+            </div>
+
+           
+            
+            <!-- Question 10: Payment Willingness -->
+            <div class="question">
+                10. What monthly fee would you pay for "real-time skeletal correction" feature?
+                <div class="option">
+                    <input type="radio" id="q10a" name="q10" value="free" required>
+                    <label for="q10a">Prefer free tools</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q10b" name="q10" value="10-30">
+                    <label for="q10b">$10-$30</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q10c" name="q10" value="30-60">
+                    <label for="q10c">$30-$60</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q10d" name="q10" value="60+">
+                    <label for="q10d">$60+</label>
+                </div>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="submitSurvey()">Submit Survey</button>
+        </form>
+    </div>
+
+    <div class="container thank-container" id="thankContainer">
+        <h2 class="thank-title">Thanks for Your Feedback!</h2>
+        <p class="thank-text">We've received your posture concerns. Experience our platform to see if these issues are solved!</p>
+        <a href="/platform" class="platform-link">Start Your Experience</a>
+    </div>
+
+    <script>
+        function submitSurvey() {
+            const requiredQuestions = ['q1', 'q2', 'q10'];
+            const missingRequired = requiredQuestions.some(q => 
+            !document.querySelector(`input[name="${q}"]:checked`)
+        );
+        if (missingRequired) {
+        alert('请完成标注*的必答问题！');
+        return;
+    }
+    const totalSelected = document.querySelectorAll('input:checked').length;
+    if (totalSelected < 10) {
+        alert(`还需选择 ${10 - totalSelected} 个选项`);
+        return;
+    }
+    document.getElementById('surveyContainer').style.display = 'none';
+    document.getElementById('thankContainer').style.display = 'block';
+}
+    </script>
+</body>
+</html>
